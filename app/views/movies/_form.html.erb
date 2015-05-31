@@ -1,0 +1,43 @@
+<%= form_for(@movie) do |f| %>
+    <% if @movie.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
+
+          <ul>
+            <% @movie.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <div class="field">
+      <%= f.label :title %><br>
+      <%= f.text_field :title %>
+    </div>
+    <div class="field">
+      <%= f.label :rating %><br>
+      <%= f.number_field :rating %>
+    </div>
+    <div class="field">
+      <%= f.label :description %><br>
+      <%= f.text_field :description %>
+    </div>
+    <div class="field">
+      <b>Artist</b><br />
+      <% @movie.roles.each do |role| %>
+          <%= check_box_tag "movie_deleted_roles_#{role.id}", role.id, false, {:name => 'movie[deleted_roles][]' } %>
+          <%= h role %><br/>
+      <% end %>
+    </div>
+    <div class="field">
+      <b>Add New Artist</b><br />
+      <% (1..3).each do |i| %>
+          <%= select_tag 'movie_new_role_artist_id', options_for_select(@artists), { :name => "movie[new_role][#{i}][artist_id]" } %>
+          <%= text_field_tag 'movie_new_role_name', '', { :name => "movie[new_role][#{i}][name]" } %>
+          <br />
+      <% end %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>

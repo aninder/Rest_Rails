@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MovieList: <%= controller.action_name %></title>
+  <%= stylesheet_link_tag "application", media: "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <style>
+    body {
+        background-color: #BBBBBB;
+    }
+    nav {
+        float:right;
+        width:30%;
+        background-color: darkseagreen;
+        padding: 20px 20px 90px 20px;
+    }
+          main{
+              background-color: cadetblue;
+              width:58%;
+              padding:50px 0 50px 50px;
+          }
+  </style>
+</head>
+<body>
+<header>
+  <span id="logo"><%=controller.class.to_s.sub('Controller',"") %> List</span>
+  <nav>
+    <ul>
+      <li><%= link_to 'movies', movies_path %></li>
+      <li><%= link_to 'artists', artists_path %></li>
+      <% if user_signed_in? %>
+          <li><p>Welcome <%= current_user.email %></p>
+            <%= link_to 'click to logout', destroy_user_session_path  %></li>
+          <% if current_user.admin?  %>
+            <span style="background-color: #666666;font-family: fantasy">Welcome Admin</span>
+              <ul>
+                <li><%= link_to 'show users', users_path %></li>
+              </ul>
+          <% end  %>
+          <% else %>
+          <p>You are not signed in.</p>
+          <li><%= link_to 'new users',  new_user_registration_path %></li>
+          <li><%= link_to 'Login', new_user_session_path %></li>
+      <% end %>
+    </ul>
+  </nav>
+</header>
+<main>
+    <p class="notice" style="color: green"><%= notice %></p>
+    <p class="alert" style="color: red"><%= alert %></p>
+    <%= yield %>
+</main>
+</body>
+</html>

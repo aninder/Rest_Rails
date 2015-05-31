@@ -1,0 +1,17 @@
+<p>
+  <strong>First name:</strong>
+  <%= @artist.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @artist.last_name %>
+</p>
+
+<p>
+  <strong>Biography:</strong>
+  <%= @artist.biography %>
+</p>
+
+<%= link_to 'Edit', edit_artist_path(@artist) %> |
+<%= link_to 'Back', artists_path %>

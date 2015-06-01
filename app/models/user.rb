@@ -6,4 +6,8 @@ class User < ActiveRecord::Base
 
   has_many :interests, :dependent => :destroy
   has_many :movies, :through => :interests
+
+  def interested_in?(movie)
+    interests.detect {|interest| interest.movie_id == movie.id}
+  end
 end

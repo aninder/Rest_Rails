@@ -1,0 +1,14 @@
+<h1>Listing interests</h1>
+<table>
+ <tr>
+  <th>Movie</th>
+</tr>
+  <% @interests.each do |interest| %>
+      <tr>
+        <td><%=interest.movie.title %></td>
+        <td><%= link_to 'Destroy', interest, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+  <% end %>
+</table>
+<br />
+<%= link_to 'New interest', new_interest_path %>

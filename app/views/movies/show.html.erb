@@ -17,6 +17,17 @@
 <% @movie.roles.each do |role| -%>
     <br /><%= link_to h(role.artist.full_name), role.artist %> - <%= role.name %>
 <% end -%>
+<% if user_signed_in? %>
+    <% unless current_user.interested_in?(@movie) %>
+        <%= form_for current_user.interests.build(:movie => @movie) do |f| %>
+            <%= f.hidden_field :movie_id %>
+            <%= content_tag :button, 'Add this as an interest', :type => 'submit' %>
+        <% end %>
+    <% else %>
+        <p>You have added this movie as an interest</p>
+    <% end %>
+<% end %>
+
 <br/><br/>
 
 <%= link_to 'Edit', edit_movie_path(@movie) %> |

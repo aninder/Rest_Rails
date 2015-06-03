@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :releases
+  resources :releases
   resources :interests
   resources :artists
   devise_for :users

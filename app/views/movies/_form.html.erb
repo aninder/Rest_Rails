@@ -22,12 +22,12 @@
       <%= f.label :description %><br>
       <%= f.text_field :description %>
     </div>
-    <% if action_name == "edit" %>
+    <% if action_name == "edit" && @movie.roles.size > 0  %>
         <div class="field">
           <b>Remove Artist</b><br />
           <% @movie.roles.each do |role| %>
               <%= check_box_tag "movie_deleted_roles_#{role.id}", role.id, false, {:name => 'movie[deleted_roles][]' } %>
-              <%= h role %><br/>
+              <%= role %><br/>
           <% end %>
         </div>
     <% end %>

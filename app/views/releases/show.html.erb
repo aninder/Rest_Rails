@@ -1,0 +1,17 @@
+<p>
+  <strong>Movie:</strong>
+  <%= @release.movie_id %>
+</p>
+
+<p>
+  <strong>Format:</strong>
+  <%= @release.format %>
+</p>
+
+<p>
+  <strong>Released on:</strong>
+  <%= @release.released_on %>
+</p>
+
+<%= link_to 'Edit', edit_release_path(@release) %> |
+<%= link_to 'Back', releases_path %>

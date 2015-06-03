@@ -1,6 +1,6 @@
 <p>
-  <strong>Name:</strong>
-  <%= @movie.title %>
+  <strong>Title:</strong>
+  <%=@movie.title %>
 </p>
 
 <p>
@@ -12,11 +12,19 @@
   <strong>Description:</strong>
   <%= @movie.description %>
 </p>
+<p>
+  <strong>Artist</strong>
+  <% @movie.roles.each do |role| -%>
+      <br /><%= link_to h(role.artist.full_name), role.artist %> - <%= role.name %>
+  <% end -%>
+</p>
+<p>
+  <strong>Releases:</strong>
+  <% @movie.releases.each do |release| %>
+      <br /><%= release %>
+  <% end %>
+</p>
 
-<b>Artist</b>
-<% @movie.roles.each do |role| -%>
-    <br /><%= link_to h(role.artist.full_name), role.artist %> - <%= role.name %>
-<% end -%>
 <% if user_signed_in? %>
     <% unless current_user.interested_in?(@movie) %>
         <%= form_for current_user.interests.build(:movie => @movie) do |f| %>

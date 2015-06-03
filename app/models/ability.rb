@@ -11,6 +11,7 @@ class Ability
         can :read, User, :id=>user.id
         can :read, Movie
         can :read, Artist
+        can :read, Release
         # can :read, :all
       end
     #

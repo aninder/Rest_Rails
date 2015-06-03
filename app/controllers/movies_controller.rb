@@ -1,6 +1,6 @@
 class MoviesController < ApplicationController
   before_action   :set_movie, only: [:show, :edit, :update, :destroy]
-  before_action   :set_artists, only: [:new, :show, :edit, :update, :destroy]
+  before_action   :set_artists, only: [:new, :show, :edit, :update, :destroy, :create]
   load_and_authorize_resource param_method: :movie_params
 
   # GET /movies

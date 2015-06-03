@@ -1,0 +1,31 @@
+<h1>Listing Releases</h1>
+<%if !@releases.empty?  %>
+<table>
+  <thead>
+    <tr>
+      <th>Movie</th>
+      <th>Format</th>
+      <th>Released on</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @releases.each do |release| %>
+      <tr>
+        <td><%= release.movie.title %></td>
+        <td><%= release.format %></td>
+        <td><%= release.released_on %></td>
+        <td><%= link_to 'Show', release %></td>
+        <td><%= link_to 'Edit', edit_release_path(release) %></td>
+        <td><%= link_to 'Destroy', release, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+ <%else%>
+    empty hai , no entries pls !!
+<%end%>
+<br>
+
+<%= link_to 'New Release', new_release_path %>

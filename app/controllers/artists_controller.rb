@@ -74,6 +74,6 @@ end
 
 # Never trust parameters from the scary internet, only allow the white list through.
 def artist_params
-  params.require(:artist).permit(:first_name, :last_name, :biography)
+  params.require(:artist).permit(:first_name, :last_name, :biography, :image)
 end
 end

@@ -25,6 +25,12 @@
   <% end %>
 </p>
 
+<p>
+  <strong>Poster:</strong>
+  <%= image_tag @movie.image_url(:resize).to_s %>
+</p>
+
+
 <% if user_signed_in? %>
     <% unless current_user.interested_in?(@movie) %>
         <%= form_for current_user.interests.build(:movie => @movie) do |f| %>

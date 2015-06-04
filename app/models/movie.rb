@@ -1,4 +1,5 @@
 class Movie < ActiveRecord::Base
+  mount_uploader :image, MovieImageUploader
   validates_presence_of :title
   validates_length_of :title, :in => 1..100
   validates_uniqueness_of :title

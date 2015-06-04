@@ -26,9 +26,14 @@
               <br/>
         <% end -%>
           </td>
-        <td><%= link_to 'Show', movie %></td>
-        <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
-        <td><%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= link_to 'Show', movie %>
+          <%= link_to 'Edit', edit_movie_path(movie) %>
+          <%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+        <td>
+          <%= image_tag movie.image_url(:thumb).to_s %>
+        </td>
       </tr>
     <% end %>
   </tbody>

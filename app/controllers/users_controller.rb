@@ -48,6 +48,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def releases
+    movie_ids = movies.map(&:id)
+    Release.find(:all,
+                 :include => :movie,
+                 :conditions => ["movie_id IN (?)", movie_ids],
+                 :order => 'released_on DESC')
+  end
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_user

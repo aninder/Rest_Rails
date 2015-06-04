@@ -6,7 +6,11 @@ class MoviesController < ApplicationController
   # GET /movies
   # GET /movies.json
   def index
-    @movies = Movie.all
+    if params[:query].blank?
+      @movies = Movie.all
+    else
+      @movies = Movie.all.where('CONCAT(title, description) LIKE ?', "%#{params[:query]}%")
+    end
   end
 
   # GET /movies/1

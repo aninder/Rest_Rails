@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
-  resources :releases
+  get 'notifications/index', as: 'notifications'
+
   resources :releases
   resources :interests
   resources :artists
+  # resource :user do
+  #   resources :interests
+  #   resources :notifications
+  # end
   devise_for :users
   get 'users' => 'users#index'
   get 'users/:id/edit' => 'users#edit', as: 'edit_user'

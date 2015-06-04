@@ -1,5 +1,8 @@
 <h1>Listing Artists</h1>
-
+<% form_tag artists_path, :method => :get do %>
+    Find a artist: <%= text_field_tag :query %>
+    <%= submit_tag :search %>
+<% end %>
 <table>
   <thead>
     <tr>

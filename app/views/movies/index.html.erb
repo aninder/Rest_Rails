@@ -1,4 +1,8 @@
 <h1>Listing Movies</h1>
+<%= form_tag movies_path, :method => :get do %>
+    Find a movie: <%= text_field_tag :query %>
+    <%= submit_tag :search %>
+<% end %>
 <div class="CSSTableGenerator">
 <table>
   <thead>

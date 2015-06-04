@@ -133,6 +133,7 @@
       <li><%= link_to 'artists', artists_path %></li>
       <% if user_signed_in? %>
           <li><%= link_to 'interests', interests_path %></li>
+          <li><%= link_to 'notifications', notifications_path %></li>
           <li><p>Welcome <%= current_user.email %></p>
             <%= link_to 'click to logout', destroy_user_session_path  %>
           </li>

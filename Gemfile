@@ -50,3 +50,6 @@ gem 'mocha', group: :test
 gem "bullet", :group => "development"
 gem 'rails-footnotes'
 gem 'traceroute'
+gem "rubycritic"
+gem "rails_best_practices"
+gem 'seed_dump'

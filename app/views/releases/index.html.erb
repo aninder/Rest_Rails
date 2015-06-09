@@ -13,7 +13,7 @@
   <tbody>
     <% @releases.each do |release| %>
       <tr>
-        <td><%= release.movie.title %></td>
+        <td><%= release.movie_title %></td>
         <td><%= release.format %></td>
         <td><%= release.released_on %></td>
         <td><%= link_to 'Show', release %></td>

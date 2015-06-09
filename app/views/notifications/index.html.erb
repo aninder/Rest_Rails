@@ -6,7 +6,7 @@
 </tr>
   <% @releases.try(:each) do |release| %>
       <tr>
-        <td><%=h release.movie.title %></td>
+        <td><%=h release.movie_title %></td>
         <td><%=h release.format %></td>
         <td><%=h release.released_on %></td>
       </tr>

@@ -14,7 +14,7 @@ class NotificationsController < ApplicationController
     respond_to do |format|
       format.html
       format.js {
-        render :template => 'releases/index'
+        render 'releases/index'
       }
     end
   end

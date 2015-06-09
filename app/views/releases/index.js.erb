@@ -1,7 +1,7 @@
 var markup = '<ol id="movielist-releases">';
 <% @releases.each do |release| %>
 markup += '<li><%= release.released_on.strftime('%m/%d/%Y') %> - ';
-markup += '<%= release.movie.title %></li>';
+markup += '<%= release.movie_title %></li>';
 <% end %>
 markup += '</ol>';
 document.write(markup);

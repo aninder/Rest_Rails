@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150604183219) do
+ActiveRecord::Schema.define(version: 20150609211251) do
 
   create_table "artists", force: :cascade do |t|
     t.string   "first_name", limit: 255
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 20150604183219) do
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
   end
+
+  add_index "interests", ["user_id", "movie_id"], name: "index_interests_on_user_id_and_movie_id", unique: true, using: :btree
 
   create_table "movies", force: :cascade do |t|
     t.string   "title",       limit: 255
@@ -46,6 +48,8 @@ ActiveRecord::Schema.define(version: 20150604183219) do
     t.datetime "updated_at",              null: false
   end
 
+  add_index "releases", ["movie_id"], name: "index_releases_on_movie_id", using: :btree
+
   create_table "roles", force: :cascade do |t|
     t.integer  "movie_id",   limit: 4
     t.integer  "artist_id",  limit: 4
@@ -53,6 +57,9 @@ ActiveRecord::Schema.define(version: 20150604183219) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  add_index "roles", ["artist_id"], name: "index_roles_on_artist_id", using: :btree
+  add_index "roles", ["movie_id"], name: "index_roles_on_movie_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "",    null: false

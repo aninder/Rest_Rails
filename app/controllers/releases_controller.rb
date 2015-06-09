@@ -1,11 +1,20 @@
 class ReleasesController < ApplicationController
   before_action :set_release, only: [:show, :edit, :update, :destroy]
   before_action :set_movies, only: [:new, :edit]
+  skip_before_action :verify_authenticity_token, if: :js_get_request?
 
   # GET /releases
   # GET /releases.json
   def index
-    @releases = Release.all
+    respond_to do |format|
+      format.html {
+        @releases = Release.all
+      }
+      format.js {
+        @releases = Release.all.includes(:movie).order('released_on DESC').
+        where('released_on >= ?', Date.today)
+      }
+    end
   end
 
   # GET /releases/1
@@ -65,17 +74,17 @@ class ReleasesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_release
-      @release = Release.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_release
+    @release = Release.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def release_params
-      params.require(:release).permit(:movie_id, :format, :released_on)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def release_params
+    params.require(:release).permit(:movie_id, :format, :released_on)
+  end
 
-    def set_movies
-      @movies = Movie.all.order('title').map {|m| [m.title, m.id]}
-    end
+  def set_movies
+    @movies = Movie.all.order('title').map {|m| [m.title, m.id]}
+  end
 end

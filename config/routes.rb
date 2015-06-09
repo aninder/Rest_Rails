@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   delete 'users/:id' => 'users#destroy'
   get 'users/:id' => 'users#show', as: 'user'
   resources :movies
+  get 'users/:user_id/notifications', :controller => 'notifications', :action => 'index'
+  get 'users/:user_id/notifications.:format', :controller => 'notifications', :action => 'index'
 
   # , path_names: {
   #                sign_up:'aaja!',

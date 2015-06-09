@@ -6,5 +6,12 @@ class ApplicationController < ActionController::Base
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, :alert => exception.message
   end
+
+  # skip_before_action :verify_authenticity_token, if: :js_get_request?
+
+  protected
+  def js_get_request?
+    request.format.js? && request.method == "GET"
+  end
   # binding.pry
 end

@@ -7,9 +7,9 @@ class MoviesController < ApplicationController
   # GET /movies.json
   def index
     if params[:query].blank?
-      @movies = Movie.all
+      @movies = Movie.all.includes(:roles => :artist)
     else
-      @movies = Movie.all.where('CONCAT(title, description) LIKE ?', "%#{params[:query]}%")
+      @movies = Movie.all.includes(:roles => :artist).where('CONCAT(title, description) LIKE ?', "%#{params[:query]}%")
     end
   end
 
@@ -69,7 +69,7 @@ class MoviesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_movie
-      @movie = Movie.find(params[:id])
+      @movie = Movie.includes(:roles => :artist).find(params[:id])
     end
 
     def set_artists

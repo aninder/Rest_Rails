@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
     respond_to do |format|
-      @user.assign_attributes(user_params);
+      @user.assign_attributes(user_params)
       unless(@user.changed?)
         format.html { redirect_to edit_user_path(@user), notice: 'no changes done , try updating something if u come so far' }
       end

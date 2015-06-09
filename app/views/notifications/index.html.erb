@@ -4,7 +4,7 @@
   <th>Format</th>
   <th>Released on</th>
 </tr>
-  <% @releases.t ry(:each) do |release| %>
+  <% @releases.try(:each) do |release| %>
       <tr>
         <td><%=h release.movie.title %></td>
         <td><%=h release.format %></td>

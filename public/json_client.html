@@ -27,15 +27,22 @@
             });
         }
         function displayInterestList(interests) {
-            var markup = '<ul>';
+            var markup = '<table>';
             interests.each(function(interest) {
-                markup += '<li>' + interest.movie_title + '</li>';
+                markup += '<tr>'
+                markup += '<td>'
+                markup += interest.movie_title
+                markup += '</td>'
+                markup += '<td>'
+                markup += interest.user_email
+                markup += '</td>'
+                markup +='</tr>';
             });
-            markup += '</ul>';
+            markup += '</table>';
             markup += '<form method="post" id="interest-form" ';
             markup += 'onsubmit="submitForm(); return false;" ';
-            markup += 'action="interests.json">';
-            markup += 'Add a Movie: ';
+//            markup += 'action="interests.json">';
+            markup += 'Add a Movie: >';
             markup += '<input type="text" name="interest[movie_title]" />';
             markup += '<input type="submit" value="Save" />';
             markup += '</form>';

@@ -7,7 +7,9 @@ class Interest < ActiveRecord::Base
     movie.title
   end
   def movie_title=(title)
-    binding.pry
-    self.movie = Movie.find_by_title(params[:title])
+    self.movie = Movie.find_by_title(title)
+  end
+  def user_email
+    user.email
   end
 end

@@ -6,19 +6,24 @@ class InterestsController < ApplicationController
       format.html
       format.json {
         # render :json => @interests.to_json(:methods => [:movie_title] )}
-        render :json => @interests.to_json( :only => [], :methods => [:movie_title]  )
+        render :json => @interests.to_json( :only => [], :methods => [:movie_title, :user_email]  )
       }
     end
   end
   def create
-    current_user.interests.create(interest_params)
-    flash[:notice] = 'You have added an interest in the specified movie'
+    begin
+      current_user.interests.create!(interest_params)
+      # binding.pry
+      flash[:notice] = 'You have added an interest in the specified movie'
+    rescue
+      flash[:notice] = 'Please add correct movie !'
+    end
     respond_to do |format|
       format.html {
         redirect_to interests_path
       }
       format.json {
-        render({ :json => current_user.interests.reload.to_json(:methods => [:movie_title] ) })
+        render({ :json => current_user.interests.includes(:movie).reload.to_json( :only => [], :methods => [:movie_title, :user_email] ) })
       }
     end
   end

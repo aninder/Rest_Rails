@@ -47,3 +47,5 @@ end
 
 
 gem 'mocha', group: :test
+gem "bullet", :group => "development"
+gem 'rails-footnotes'

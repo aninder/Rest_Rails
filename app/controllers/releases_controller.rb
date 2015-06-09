@@ -8,7 +8,7 @@ class ReleasesController < ApplicationController
   def index
     respond_to do |format|
       format.html {
-        @releases = Release.all
+        @releases = Release.all.includes(:movie)
       }
       format.js {
         @releases = Release.all.includes(:movie).order('released_on DESC').

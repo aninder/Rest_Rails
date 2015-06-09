@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'notifications/index', as: 'notifications'
 
   resources :releases
-  resources :interests
+  resources :interests , :only=>[:index, :create, :destroy]
   resources :artists
   # resource :user do
   #   resources :interests

@@ -30,10 +30,10 @@ group :development, :test do
   gem  "pry"
   gem  "pry-stack_explorer"
   gem  "pry-doc"
-  gem 'pry-docmore'
+  gem  'pry-docmore'
   gem  "pry-byebug"
-  gem 'pry-rails'
-  gem 'meta_request'
+  gem  'pry-rails'
+  gem  'meta_request'
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -49,3 +49,4 @@ end
 gem 'mocha', group: :test
 gem "bullet", :group => "development"
 gem 'rails-footnotes'
+gem 'traceroute'

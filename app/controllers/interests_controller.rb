@@ -32,6 +32,8 @@ class InterestsController < ApplicationController
     interest.destroy
     redirect_to interests_path
   end
+
+  private
   def interest_params
     params.require(:interest).permit(:movie_id, :movie_title)
   end

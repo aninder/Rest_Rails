@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :search_suggestions
   get 'notifications/index', as: 'notifications'
 
   resources :releases

@@ -11,10 +11,14 @@ class MoviesController < ApplicationController
     else
       @movies = Movie.all.includes(:roles => :artist).where('CONCAT(title, description) LIKE ?', "%#{params[:query]}%")
     end
+    respond_to do |format|
+      format.html
+      format.json {response.headers["XXXXXXX"]="Test header value"; render :index; }
+    end
   end
 
   # GET /movies/1
-  # GET /movies/1. json
+  # GET /movies/1.json
   def show
   end
 

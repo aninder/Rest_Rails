@@ -30,9 +30,12 @@
   <%= image_tag @movie.image_url(:resize).to_s %>
 </p>
 
-
 <% if user_signed_in? %>
     <% unless current_user.interested_in?(@movie) %>
+        <!--<%= form_for current_user.interests.build(:movie => @movie) do |f| %>-->
+            <!--<%= f.hidden_field :movie_id %>-->
+            <!--<%= content_tag :button, 'Add this as an interest', :type => 'submit' %>-->
+        <!--<% end %>-->
         <%= form_for current_user.interests.build(:movie => @movie) do |f| %>
             <%= f.hidden_field :movie_id %>
             <%= content_tag :button, 'Add this as an interest', :type => 'submit' %>

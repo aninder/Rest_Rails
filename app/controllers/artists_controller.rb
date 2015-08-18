@@ -8,6 +8,9 @@ class ArtistsController < ApplicationController
     if params[:query].blank?
       @artists = Artist.all
     else
+      # //check how secure . user input in raw(part of longer query)query using where method of ActiveModel(artist) instance/ /
+      # it is secure , activerecord takes care of escaping frm sql injection
+      # Active Record takes care of building the query to avoid injection attacks,
       @artists = Artist.all.where('CONCAT(first_name, last_name, biography) LIKE ?', "%#{params[:query]}%")
     end
   end

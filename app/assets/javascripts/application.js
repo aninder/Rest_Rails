@@ -2,5 +2,5 @@
 // All this logic will automatically be available in application.js.
 //= require jquery
 //= require jquery_ujs
-//= require jquery-ui
-//= require autocomplete-rails
+// require jquery-ui
+// require autocomplete-rails
